@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   jenkins:
     build: jenkins/.
@@ -7,8 +8,25 @@ services:
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
-    - slave  
+    - slave
+    volumes:
+      - jenkins:/var/jenkins_home
   slave:
     build: jenkins-slave/.
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+    - registry
+    volumes:
+      - slave:/home/jenkins
+  registry:
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - registry:/var/lib/registry
+
+volumes:
+    jenkins:
+    slave:
+    registry:
