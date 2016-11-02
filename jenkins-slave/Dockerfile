@@ -7,6 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive curl -sL https://deb.nodesource.com/setup_7.x
  && mkdir -p /var/run/sshd \
  && groupadd -g 1000 jenkins \
  && useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins \
+ && usermod -a -G staff jenkins \
  && echo "jenkins:jenkins" | chpasswd \
  && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
  && rm -rf /var/lib/apt/lists/*
