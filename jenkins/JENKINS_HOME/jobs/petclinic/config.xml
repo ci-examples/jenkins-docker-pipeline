@@ -13,7 +13,7 @@
       <configVersion>2</configVersion>
       <userRemoteConfigs>
         <hudson.plugins.git.UserRemoteConfig>
-          <url>https://github.com/nilshartmann/spring-petclinic.git</url>
+          <url>https://github.com/ci-examples/spring-petclinic-reactjs.git</url>
         </hudson.plugins.git.UserRemoteConfig>
       </userRemoteConfigs>
       <branches>
