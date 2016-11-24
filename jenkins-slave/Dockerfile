@@ -1,7 +1,8 @@
 FROM java:8-jdk
 
 RUN DEBIAN_FRONTEND=noninteractive curl -sL https://deb.nodesource.com/setup_7.x | bash - \
- && apt-get install -y nodejs
+ && apt-get install -y nodejs \
+ && npm install -g yarn
 
 RUN apt-get install -y apt-transport-https ca-certificates \
  && apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
