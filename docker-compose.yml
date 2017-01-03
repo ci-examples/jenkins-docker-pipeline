@@ -19,6 +19,11 @@ services:
     depends_on:
     - registry
 
+  sonarqube:
+    build: sonarqube/.
+    ports:
+    - "9000:9000"
+
   registry:
     image: registry:2
     ports:

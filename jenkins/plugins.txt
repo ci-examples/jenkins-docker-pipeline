@@ -1,4 +1,5 @@
-git:3.0.0
+git:3.0.1
 workflow-aggregator:2.4
-ssh-slaves:1.11
-docker-workflow:1.9
+ssh-slaves:1.12
+docker-workflow:1.9.1
+sonar:2.5
