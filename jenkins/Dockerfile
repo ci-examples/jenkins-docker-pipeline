@@ -8,7 +8,7 @@ USER root
 #  && usermod -a -G staff jenkins
 
 USER jenkins
-ENV JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+ENV JAVA_OPTS='-Djenkins.install.runSetupWizard=false -Dhudson.model.DirectoryBrowserSupport.CSP='
 
 ADD JENKINS_HOME /usr/share/jenkins/ref
 
