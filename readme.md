@@ -1,3 +1,7 @@
+## ACHTUNG:
+Wir nutzen das Compose-File-Format 2.1, damit der Jenkins-Slave erst nach Master hochgefahren wird.
+Deswegen ist Docker 1.13 und Docker-Compose 1.10 notwendig. 
+
 ## Start Jenkins
     docker-compose build
     docker-compose up

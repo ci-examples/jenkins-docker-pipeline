@@ -3,4 +3,5 @@ workflow-aggregator:2.4
 ssh-slaves:1.12
 docker-workflow:1.9.1
 sonar:2.5
-htmlpublisher:1.11
+htmlpublisher:1.12
+swarm:2.2

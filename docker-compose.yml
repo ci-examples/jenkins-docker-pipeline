@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   jenkins:
@@ -9,7 +9,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - jenkins:/var/jenkins_home
     depends_on:
-    - slave
+    - registry
 
   slave:
     build: jenkins-slave/.
@@ -17,7 +17,11 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - slave:/home/jenkins
     depends_on:
-    - registry
+      jenkins:
+        condition: service_healthy
+    environment:
+      - "JENKINS_PORT_8080_TCP_ADDR=jenkins"
+      - "JENKINS_PORT_8080_TCP_PORT=8080"
 
   sonarqube:
     build: sonarqube/.
