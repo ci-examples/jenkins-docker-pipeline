@@ -11,9 +11,7 @@ RUN apt-get install -y apt-transport-https ca-certificates \
  && apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
  && echo 'deb https://apt.dockerproject.org/repo debian-jessie main' > /etc/apt/sources.list.d/docker.list \
  && apt-get update \
- && apt-get install -y docker-engine openssh-server net-tools\
- && sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g'  /etc/pam.d/sshd \
- && mkdir -p /var/run/sshd \
+ && apt-get install -y docker-engine \
  && groupadd -g 1000 jenkins \
  && useradd -d $JENKINS_HOME -s /bin/bash -m jenkins -u 1000 -g jenkins -G staff \
  && echo "jenkins:jenkins" | chpasswd \
@@ -22,8 +20,6 @@ RUN apt-get install -y apt-transport-https ca-certificates \
  && curl --create-dirs -sSLo /usr/share/jenkins/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar \
  && chmod 755 /usr/share/jenkins \
  && rm -rf /var/lib/apt/lists/*
-
-
 
 COPY jenkins-slave.sh /usr/local/bin/jenkins-slave.sh
 USER jenkins
