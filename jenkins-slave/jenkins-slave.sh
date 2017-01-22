@@ -1,7 +1,5 @@
 #!/bin/bash
 
-curl --retry 100 http://jenkins:8080/tcpSlaveAgentListener/
-
 # if `docker run` first argument start with `-` the user is passing jenkins swarm launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "-"* ]]; then
 
@@ -10,7 +8,7 @@ if [[ $# -lt 1 ]] || [[ "$1" == "-"* ]]; then
 
   # if -master is not provided and using --link jenkins:jenkins
   if [[ "$@" != *"-master "* ]] && [ ! -z "$JENKINS_PORT_8080_TCP_ADDR" ]; then
-    PARAMS="-master http://$JENKINS_PORT_8080_TCP_ADDR:$JENKINS_PORT_8080_TCP_PORT"
+    PARAMS="-master http://$JENKINS_PORT_8080_TCP_ADDR:$JENKINS_PORT_8080_TCP_PORT -username jenkins -password jenkins"
   fi
 
   echo Running java $JAVA_OPTS -jar $JAR -fsroot $HOME $PARAMS "$@"
