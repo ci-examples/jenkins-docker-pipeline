@@ -5,3 +5,4 @@ docker-workflow:1.9.1
 sonar:2.5
 htmlpublisher:1.12
 swarm:2.2
+job-dsl:1.57

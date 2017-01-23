@@ -55,3 +55,29 @@ def runnerInst = new hudson.plugins.sonar.SonarRunnerInstallation("sonar", "", [
 sonarRunner.setInstallations(runnerInst)
 
 sonarRunner.save()
+
+//JOB
+import javaposse.jobdsl.dsl.DslScriptLoader
+import javaposse.jobdsl.plugin.JenkinsJobManagement
+
+def job = """
+pipelineJob('petclinic') {
+     definition {
+       cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/ci-examples/spring-petclinic-reactjs.git')
+                    }
+                   	branches('**/master')
+                }
+            }
+            scriptPath('Jenkinsfile')
+        }
+    }
+}
+""";
+
+def jobManagement = new JenkinsJobManagement(System.out, [:], new File('.'));
+
+new DslScriptLoader(jobManagement).runScript(job)
