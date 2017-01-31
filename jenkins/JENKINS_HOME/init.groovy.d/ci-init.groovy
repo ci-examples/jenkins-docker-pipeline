@@ -24,6 +24,7 @@ instance.save();
 //Master executors
 instance.setNumExecutors(0)
 
+instance.save();
 
 //SonarQube
 def sonarGlobal=Jenkins.instance.getDescriptor('hudson.plugins.sonar.SonarGlobalConfiguration')
